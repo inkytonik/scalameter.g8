@@ -24,7 +24,7 @@ parallelExecution in Test := false
 
 libraryDependencies ++=
     Seq (
-        "org.scalameter" %% "scalameter" % "0.1"
+        "org.scalameter" %% "scalameter" % "0.2"
     )
 
 resolvers ++= Seq (
