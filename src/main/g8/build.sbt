@@ -12,7 +12,7 @@ scalacOptions ++= Seq ("-deprecation", "-unchecked")
 
 // Interactive settings
 
-logLevel := Level.Warn
+logLevel := Level.Info
 
 shellPrompt <<= (name, version) { (n, v) => _ => n + " " + v + "> " }
 
@@ -24,8 +24,13 @@ parallelExecution in Test := false
 
 libraryDependencies ++=
     Seq (
-        "org.scalameter" %% "scalameter" % "0.2"
+        "com.github.axel22" %% "scalameter" % "0.2"
     )
+
+testFrameworks +=
+    new TestFramework ("org.scalameter.ScalaMeterFramework")
+
+logBuffered := false
 
 resolvers ++= Seq (
     Resolver.sonatypeRepo ("releases"),
@@ -43,15 +48,6 @@ resolvers ++= Seq (
 scalaSource in Compile <<= baseDirectory { _ / "src" }
 
 scalaSource in Test <<= scalaSource in Compile
-
-unmanagedSources in Test <<= (scalaSource in Test) map { s => {
-    (s ** "*Tests.scala").get
-}}
-
-unmanagedSources in Compile <<=
-    (scalaSource in Compile, unmanagedSources in Test) map { (s, tests) =>
-        ((s ** "*.scala") --- tests).get
-    }
 
 // Resources
 

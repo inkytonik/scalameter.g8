@@ -37,9 +37,22 @@ Run the generated project as follows:
 
     cd $name$
     sbt
-    > run
-    Hello from $organization$.$name$ Main!
-    Factorial 4 = 24
+    > test
+    [info] ::Benchmark Range.map::
+    [info] cores: 8
+    [info] hostname: Oogishima.local
+    [info] jvm-name: Java HotSpot(TM) 64-Bit Server VM
+    [info] jvm-vendor: Oracle Corporation
+    [info] jvm-version: 23.5-b02
+    [info] os-arch: x86_64
+    [info] os-name: Mac OS X
+    [info] Parameters(size -> 300000): 3.82
+    [info] Parameters(size -> 600000): 7.627
+    [info] Parameters(size -> 900000): 11.451
+    [info] Parameters(size -> 1200000): 15.271
+    [info] Parameters(size -> 1500000): 19.087
+    [info]
+    [info] Passed: : Total 0, Failed 0, Errors 0, Passed 0, Skipped 0
+    >
 
-where `$organization$` and `$name$` are the values you entered when
-running the `g8` command.
+where `$name$` is the values you entered when running the `g8` command.
